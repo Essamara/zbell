@@ -1,4 +1,17 @@
+
+
+Plays a sound when balance changes (found a block) on zpool zergpool
+
+
+
+
+
+
 Installation
+
+
+
+
 
 download zbell.py somehow
 install python 3.9
