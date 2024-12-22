@@ -4,7 +4,7 @@ import playsound
 import json
 
 # Replace with your actual API endpoint
-API_ENDPOINT = "https://zergpool.com/api/walletEx?address=WALLETGOESHERE"
+API_ENDPOINT = "https://zpool.com/api/walletEx?address=WALLETGOESHERE"
 
 # Path to the sound file you want to play
 SOUND_FILE = "ohyeah.wav"
