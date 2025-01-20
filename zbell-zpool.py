@@ -4,13 +4,13 @@ import playsound
 import json
 
 # Replace with your actual API endpoint
-API_ENDPOINT = "https://zpool.com/api/walletEx?address=WALLETGOESHERE"
+API_ENDPOINT = "https://zpool.ca/api/walletEx?address=PUTWALLET"
 
 # Path to the sound file you want to play
-SOUND_FILE = "ohyeah.wav"
+SOUND_FILE = "c:/ohyeah1.wav"
 
 # Replace with the desired balance increase threshold
-BALANCE_INCREASE_THRESHOLD = 1  # 1 coin
+BALANCE_INCREASE_THRESHOLD = .01  # 1 coin
 
 def extract_balance_from_api_response(api_response):
     """
@@ -39,7 +39,6 @@ def check_balance_increase():
         response = requests.get(API_ENDPOINT)
         response.raise_for_status()  # Raise an exception for bad status codes
         current_balance = extract_balance_from_api_response(response.text)
-        current_hashrate = extract_hashrate_from_api_response(response.text)
 
         if current_balance is not None:
             global previous_balance
@@ -48,7 +47,7 @@ def check_balance_increase():
 
             if current_balance - previous_balance > BALANCE_INCREASE_THRESHOLD:
                 playsound.playsound(SOUND_FILE)
-                print(f"Balance increased by {current_balance - previous_balance} Dogecoin!")
+                print(f"Balance increased by {current_balance - previous_balance} coin!")
 
             previous_balance = current_balance
             
@@ -58,8 +57,6 @@ def check_balance_increase():
             print("\n--- Nested Data ---")
             print(f"Balance: {data['balance']}")
             print(f"Unpaid: {data['unpaid']}")
-            print(f"Total: {data['Total']}")
-            # Print hashrate for each miner
     except requests.exceptions.RequestException as e:
         print(f"Error fetching data from API: {e}")
 
